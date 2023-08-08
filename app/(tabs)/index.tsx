@@ -1,11 +1,13 @@
 import { StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
+import Auth from "@/screens/Auth";
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Move On</Text>
+      <Text style={styles.title}>Tab Check</Text>
+      <Auth />
       <View
         style={styles.separator}
         lightColor="#eee"
