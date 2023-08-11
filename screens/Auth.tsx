@@ -1,19 +1,23 @@
 import { View, Text } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   GoogleSignin,
   statusCodes,
+  GoogleSigninButton,
 } from "@react-native-google-signin/google-signin";
 
 const Auth = () => {
   const [userInfo, setUserInfo] = useState({});
-  GoogleSignin.configure({
-    scopes: ["https://www.googleapis.com/auth/drive.readonly"], // what API you want to access on behalf of the user, default is email and profile
-    // if you want to access Google API on behalf of the user FROM YOUR SERVER
-    hostedDomain: "", // specifies a hosted domain restriction
-    forceCodeForRefreshToken: true, // [Android] related to `serverAuthCode`, read the docs link below *.
-    accountName: "", // [Android] specifies an account name on the device that should be used
-  });
+  useEffect(() => {
+    GoogleSignin.configure({
+      scopes: ["https://www.googleapis.com/auth/drive.readonly"], // what API you want to access on behalf of the user, default is email and profile
+      // if you want to access Google API on behalf of the user FROM YOUR SERVER
+      hostedDomain: "", // specifies a hosted domain restriction
+      forceCodeForRefreshToken: true, // [Android] related to `serverAuthCode`, read the docs link below *.
+      accountName: "", // [Android] specifies an account name on the device that should be used
+    });
+  }, []);
+
   const signIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
@@ -34,7 +38,12 @@ const Auth = () => {
 
   return (
     <View>
-      <Text>Auth</Text>
+      <GoogleSigninButton
+        style={{ width: 230, height: 48 }}
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={signIn}
+      />
     </View>
   );
 };
