@@ -1,3 +1,5 @@
+import { useProtectedRoute } from "@/hooks/useProtectedRoute";
+import { useStore } from "@/store/client/useStore";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DarkTheme,
@@ -5,9 +7,9 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
+import { SplashScreen, Stack, Slot, router } from "expo-router";
 import { useEffect } from "react";
-import { useColorScheme } from "react-native";
+import { useColorScheme, View, Text } from "react-native";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -48,12 +50,13 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
+  const authToken = useStore((store) => store.authToken);
+  console.log({ authToken });
+  useProtectedRoute(authToken);
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+      <Slot />
     </ThemeProvider>
   );
 }

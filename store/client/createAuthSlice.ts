@@ -1,13 +1,19 @@
 import { StateCreator } from "zustand";
 
+type authObj = {
+  authToken: string;
+  username: string;
+};
 export interface AuthSlice {
   authToken: string;
-  setAuthToken: (authToken: string) => void;
+  username: string;
+  setUser: (obj: authObj) => void;
 }
 
 export const createAuthSlice: StateCreator<AuthSlice, [], [], AuthSlice> = (
   set
 ) => ({
   authToken: "",
-  setAuthToken: (authToken) => set({ authToken: authToken }),
+  username: "",
+  setUser: ({ username, authToken }) => set({ authToken, username }),
 });
