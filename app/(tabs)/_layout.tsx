@@ -3,6 +3,7 @@ import { Link, Tabs } from "expo-router";
 import { Pressable, useColorScheme } from "react-native";
 
 import Colors from "@/constants/Colors";
+import { Ionicons } from "@expo/vector-icons";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -24,10 +25,12 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: "Tab a",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Home",
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="md-home-outline" size={24} color={color} />
+          ),
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>

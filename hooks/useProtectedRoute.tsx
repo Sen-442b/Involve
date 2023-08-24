@@ -20,7 +20,7 @@ export function useProtectedRoute(userId: string) {
     } else if (userId && inAuthGroup) {
       console.log("hit tabs route");
       // Redirect away from the sign-in page.
-      router.replace("/(tabs)");
+      router.replace("/(tabs)/home");
     }
   }, [userId, segments]);
 }
