@@ -4,6 +4,7 @@ import { Pressable, useColorScheme } from "react-native";
 
 import Colors from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
+import Avatar from "@/components/Avatar";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -34,14 +35,7 @@ export default function TabLayout() {
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? "light"].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
+                {({ pressed }) => <Avatar size="small" initials />}
               </Pressable>
             </Link>
           ),
