@@ -1,3 +1,4 @@
+import { BookItem } from "@/types/BookTypes";
 import { useState } from "react";
 import {
   View,
@@ -7,13 +8,6 @@ import {
   Text,
   StyleSheet,
 } from "react-native";
-
-type BookItem = {
-  id: string;
-  cover: string;
-  title: string;
-  description: string;
-};
 
 type CarousalImageProps = {
   cover: string;

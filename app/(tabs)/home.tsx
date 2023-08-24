@@ -3,9 +3,10 @@ import { Button, Image, Pressable, StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import Auth from "@/screens/Auth";
 import { useRouter } from "expo-router";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { useState } from "react";
 import RecommendationCarousel from "@/components/RecommendationCarousel";
+import Card from "@/components/Card";
 
 const genreArr = [
   {
@@ -65,10 +66,11 @@ export default function Home() {
     <View style={styles.container}>
       <RecommendationCarousel data={genreArr} />
 
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
+      <FlatList
+        data={genreArr}
+        renderItem={({ item }) => <Card book={item} />}
+        keyExtractor={(item) => item.id}
+        horizontal
       />
     </View>
   );
