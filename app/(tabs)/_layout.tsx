@@ -35,12 +35,22 @@ export default function TabLayout() {
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
-                {({ pressed }) => <Avatar size="small" initials />}
+                {({ pressed }) => <Avatar size="small" initials={"SS"} />}
               </Pressable>
             </Link>
           ),
         }}
       />
+      <Tabs.Screen
+        name="discover"
+        options={{
+          title: "Discover",
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="search-outline" size={24} color={color} />
+          ),
+        }}
+      />
+
       <Tabs.Screen
         name="two"
         options={{
