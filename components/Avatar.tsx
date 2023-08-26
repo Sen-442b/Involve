@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 type AvatarPropsType = { size: "small" | "medium" | "large"; initials: string };
-const Avatar = ({ size }: AvatarPropsType) => {
+const Avatar = ({ size, initials }: AvatarPropsType) => {
   const [avatarSize, setAvatarSize] = useState(35);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Avatar = ({ size }: AvatarPropsType) => {
 
   return (
     <View style={[styles.avatar, { width: avatarSize, height: avatarSize }]}>
-      <Text style={styles.initials}>SS</Text>
+      <Text style={styles.initials}>{initials}</Text>
     </View>
   );
 };
