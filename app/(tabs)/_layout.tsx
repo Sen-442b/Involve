@@ -5,6 +5,7 @@ import { Pressable, useColorScheme } from "react-native";
 import Colors from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import Avatar from "@/components/Avatar";
+import { Feather } from "@expo/vector-icons";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -47,6 +48,15 @@ export default function TabLayout() {
           title: "Discover",
           tabBarIcon: ({ color }) => (
             <Ionicons name="search-outline" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="write"
+        options={{
+          title: "Write",
+          tabBarIcon: ({ color }) => (
+            <Feather name="feather" size={24} color={color} />
           ),
         }}
       />
