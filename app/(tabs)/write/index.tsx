@@ -1,20 +1,20 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
-import React from "react";
+import React, { useRef } from "react";
 import { EvilIcons } from "@expo/vector-icons";
-import { RichEditor } from "react-native-pell-rich-editor";
+
+import { useRouter } from "expo-router";
 
 const Write = () => {
+  const router = useRouter();
   return (
     <View style={styles.container}>
-      <Pressable style={styles.addBtn}>
+      <Pressable
+        style={styles.addBtn}
+        onPress={() => router.push("/add_story")}
+      >
         <EvilIcons name="plus" size={28} color="black" />
         <Text style={styles.addBtnTitle}>Write a story</Text>
       </Pressable>
-      <RichEditor
-        placeholder="Write your cool content here :)"
-        androidHardwareAccelerationDisabled={true}
-        initialHeight={250}
-      />
     </View>
   );
 };
